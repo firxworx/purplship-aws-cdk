@@ -1,0 +1,7 @@
+**/cdk.out
+**/.vscode
+.github
+
+# avoid issues w/ automated releases
+CONTRIBUTORS.md
+CHANGELOG.md
