@@ -136,7 +136,7 @@ export class PurplshipStack extends cdk.Stack {
           image: ecs.ContainerImage.fromRegistry(props.dockerImage ?? DEFAULT_DOCKER_IMAGE),
           containerPort: props.port ?? DEFAULT_PORT,
           environment: {
-            DEBUG_MODE: getPythonBooleanString(props.purplshipEnv?.DEBUG_MODE ?? true), // @todo - false
+            DEBUG_MODE: getPythonBooleanString(props.purplshipEnv?.DEBUG_MODE ?? true),
             ALLOWED_HOSTS: props.purplshipEnv.ALLOWED_HOSTS ?? '*',
             DATABASE_HOST: postgres.instance.dbInstanceEndpointAddress,
             DATABASE_PORT: postgres.instance.dbInstanceEndpointPort,
@@ -184,7 +184,7 @@ export class PurplshipStack extends cdk.Stack {
 
     // the trailing slash is important to ensure an http 200 response
     this.loadBalancedFargateService.targetGroup.configureHealthCheck({
-      path: '/', // path: '/login/',
+      path: '/login/', // path: '/', // path: '/login/',
       healthyHttpCodes: '200-299',
     })
 
